@@ -1,6 +1,8 @@
 import {
+  Box,
   Button,
   ButtonGroup,
+  Flex,
   Grid,
   GridItem,
   HStack,
@@ -27,6 +29,7 @@ function App() {
   return (
     <>
       <NavBar />
+
       <Grid
         templateAreas={{
           base: `"nav" "main"`,
@@ -47,20 +50,22 @@ function App() {
           </GridItem>
         </Show>
         <GridItem gridArea="main">
-          <HStack bottom={5} spacing={5}>
-            <PlatformSelector
-              selectedPlatform={gameQuery.platform}
-              onSelectPlatform={(platform) =>
-                setGameQuery({ ...gameQuery, platform })
-              }
-            />
+          <Flex marginLeft={3} marginBottom={5}>
+            <Box marginRight={5}>
+              <PlatformSelector
+                selectedPlatform={gameQuery.platform}
+                onSelectPlatform={(platform) =>
+                  setGameQuery({ ...gameQuery, platform })
+                }
+              />
+            </Box>
             <SortSelector
               sortOrder={gameQuery.sortOrder}
               onSelectSortOrder={(sortOrder) =>
                 setGameQuery({ ...gameQuery, sortOrder })
               }
             />
-          </HStack>
+          </Flex>
 
           <GameGrid gameQuery={gameQuery} />
         </GridItem>
